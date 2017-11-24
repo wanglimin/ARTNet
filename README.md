@@ -26,4 +26,4 @@ These models are trained on the Kinetics dataset **from scratch** and tested on 
 | ARTNet (d) |    ResNet18   |    112\*112   |  **67.6** | **93.5** |
 | ARTNet+TSN |    ResNet18   |    112\*112   |  **70.9** | **94.3** |
 
-These models learned on the Kinetics dataset are transferred to the HMDB51 and UCF101 datasets. The fine-tuning process is done with TSN framework where the segment is 2. The performance is reported over three splits by using **only RGB input**.
+These models learned on the Kinetics dataset are transferred to the HMDB51 and UCF101 datasets. The fine-tuning process is done with TSN framework where the segment number is 2. The performance is reported over three splits by using **only RGB input**.
