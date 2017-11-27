@@ -1,0 +1,32 @@
+net: "hmdb_tsn_112_c3d_resnet_18_train_val.prototxt"
+
+# testing parameter
+test_iter: 475
+test_interval: 500
+test_initialization: true
+
+# output
+display: 20
+average_loss: 20
+snapshot: 500
+snapshot_prefix: "hmdb51_split1_tsn_c3d_seg_2"
+debug_info: false
+
+# learning rate
+base_lr: 0.001
+lr_policy: "step"
+gamma: 0.1
+stepsize: 750
+max_iter: 1750
+iter_size: 1
+
+# parameter of SGD
+momentum: 0.9
+weight_decay: 0.0005
+clip_gradients: 40
+
+# GPU setting
+solver_mode: GPU
+device_id: [0,1,2,3,4,5,6,7]
+richness: 100
+
