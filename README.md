@@ -4,9 +4,12 @@ We provide the code and models for the following report ([arXiv Preprint](https:
       Appearance-and-Relation Networks for Video Classification
       Limin Wang, Wei Li, Wen Li, and Luc Van Gool
       in arXiv, 2017
-
+### Updates
+- November 23th, 2017
+  * Initialize the repo.
+  
 #### Overview
-ARTNet aims to learn spatiotemporal features from videos in an end-to-end manner. Its construction is based on a newly-designed moudle, termed as SMART block. **ARTNet is a simple and general video architecture and all these relased models are trained from scratch** on video dataset. Currently, for an engineering compromise between accuracy and efficiency, ARTNet is instantiated with the ResNet-18 architecture and trained on the input volume of 112\*112\*16. 
+ARTNet aims to learn spatiotemporal features from videos in an end-to-end manner. Its construction is based on a newly-designed moudle, termed as SMART block. **ARTNet is a simple and general video architecture and all these relased models are trained from scratch on video dataset**. Currently, for an engineering compromise between accuracy and efficiency, ARTNet is instantiated with the ResNet-18 architecture and trained on the input volume of 112\*112\*16. 
 
 #### Performance on the validation set of Kinetics
 
