@@ -46,9 +46,7 @@ from pyActionRecog.action_caffe import CaffeNet
 # build neccessary information
 print args.dataset
 split_tp = parse_split_file(args.dataset)
-# f_info = parse_directory(args.frame_path,
-#
-#                         args.rgb_prefix, args.flow_x_prefix, args.flow_y_prefix)
+
 if args.modality == 'rgb' or args.modality =='c3d_rgb':
     if args.dataset == 'hmdb51' or args.dataset == 'ucf101':
         f_info = parse_directory_rgb(args.frame_path, args.rgb_prefix)
@@ -65,7 +63,7 @@ if args.dataset == 'hmdb51' or args.dataset == 'ucf101':
 else:
     eval_video_list = split_tp
 
-score_name = 'pooling1_bn'
+score_name = 'fc-action'
 attention_name = args.attention_name
 
 def build_net():
@@ -166,10 +164,9 @@ def eval_video(video):
         frame_attentions = [x[1] for x in frame_scores]
         frame_scores = [x[0] for x in frame_scores]
         
-#    if np.argmax(default_aggregation_func(frame_scores)) == label:
-#       ii = 1
-    print 'video {0} done'.format(vid)   
-#    print 'video {0} pred {1} label {2} same {3} done'.format(vid, np.argmax(default_aggregation_func(frame_scores)), label, ii )
+    if np.argmax(default_aggregation_func(frame_scores)) == label:
+       ii = 1
+    print 'video {0} pred {1} label {2} same {3} done'.format(vid, np.argmax(default_aggregation_func(frame_scores)), label, ii )
     sys.stdin.flush()
     if attention_name is None:
         return np.array(frame_scores), label
@@ -183,23 +180,16 @@ else:
     build_net()
     video_scores = map(eval_video, eval_video_list)
 
-# video_pred = [np.argmax(default_aggregation_func(x[0])) for x in video_scores]
-# video_labels = [x[1] for x in video_scores]
-# cf = confusion_matrix(video_labels, video_pred).astype(float)
-# cls_cnt = cf.sum(axis=1)
-# cls_hit = np.diag(cf)
+video_pred = [np.argmax(default_aggregation_func(x[0])) for x in video_scores]
+video_labels = [x[1] for x in video_scores]
+cf = confusion_matrix(video_labels, video_pred).astype(float)
+cls_cnt = cf.sum(axis=1)
+cls_hit = np.diag(cf)
 
-# cls_acc = cls_hit/cls_cnt
+cls_acc = cls_hit/cls_cnt
+print cls_acc
 
-# print cls_acc
+print 'Accuracy {:.02f}%'.format(np.mean(cls_acc)*100)
 
-# print 'Accuracy {:.02f}%'.format(np.mean(cls_acc)*100)
-
-# if args.save_scores is not None:
-#     np.savez(args.save_scores, scores=video_scores, labels=video_labels)
-
-
-
-import scipy.io as sio
-sio.savemat('artnet_s_t_1.mat', {'feature': video_scores})
-
+if args.save_scores is not None:
+     np.savez(args.save_scores, scores=video_scores, labels=video_labels)
