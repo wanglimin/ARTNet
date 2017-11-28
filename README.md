@@ -1,5 +1,5 @@
 # Appearance-and-Relation Networks
-We provide the code and models for the following report ([arXiv Preprint](https://arxiv.org/abs/)):
+We provide the code and models for the following report ([arXiv Preprint](https://arxiv.org/abs/1711.09125)):
 
       Appearance-and-Relation Networks for Video Classification
       Limin Wang, Wei Li, Wen Li, and Luc Van Gool
