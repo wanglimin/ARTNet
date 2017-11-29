@@ -16,7 +16,7 @@ The training of ARTNet is based on our modified [Caffe toolbox](https://github.c
 
 The training code is under folder of `models/`.
 
-##### Performance on the validation set of Kinetics
+#### Performance on the validation set of Kinetics
 
 |        Model        | Backbone architecture | Spatial resolution | Top-1 Accuracy | Top-5 Accuracy |
 |:-------------------:|:--------------:|:--------------:| :--------------:| :--------------:|
