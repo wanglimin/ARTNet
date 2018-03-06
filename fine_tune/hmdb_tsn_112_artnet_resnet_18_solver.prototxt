@@ -1,4 +1,4 @@
-net: "hmdb_tsn_112_c3d_resnet_18_train_val.prototxt"
+net: "hmdb_tsn_112_artnet_resnet_18_train_val.prototxt"
 
 # testing parameter
 test_iter: 475
